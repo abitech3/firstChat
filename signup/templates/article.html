@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+  {% block content %}
+  <main id="" class="tab-main">
+
+   
+   <!-- Default Table -->
+   <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">title</th>
+        <th scope="col">article</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for art in article %}
+      <tr>
+        <th scope="row">1</th>
+        <td>{{art.title}}</td>
+        <td>{{art.boytext}}</td>
+        <td><a href="{% url 'signup:delete_article' art.id %}">delete</a></td>
+
+
+      </tr>
+      {% endfor%}
+    </tbody>
+  </table>
+  <!-- End Default Table Example -->
+</div>
+</div> 
+                    
+          
+       
+    
+
+  </main><!-- End #main -->
+
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  {% endblock %}
+ 
+  
+</body>
+
+</html>

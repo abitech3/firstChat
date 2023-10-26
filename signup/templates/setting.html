@@ -1,0 +1,230 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block header %}
+{% include 'header.html'  %}
+<link rel="stylesheet" href="{% static 'signup/css/tab.css' %}">
+
+{% endblock %}
+
+{% block aside %}
+{% include 'side.html'  %}
+{% endblock %}
+
+  {% block content %}
+  <main id="" class="tab-main">
+
+    <!-- <div class="pagetitle">
+      <h1>Form Layouts</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+          <li class="breadcrumb-item">Forms</li>
+          <li class="breadcrumb-item active">Layouts</li>
+        </ol>
+      </nav> -->
+    </div><!-- End Page Title -->
+    <section class="section">
+      <div class="row">
+        <!-- <div class="col-lg-6"> -->
+
+          <!-- <div class="card"> -->
+            <!-- <div class="card-body"> -->
+              <h5 class="card-title">Horizontal Form</h5>
+
+            <!-- Vertical Pills Tabs -->
+            <!-- <div class="tab-container"> -->
+            <div class="d-flex align-items-start">
+            <div class="tab-container">
+              <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Company</button>
+                <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">User</button>
+                <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Integration</button>
+              </div>
+            </div>
+            <!-- tab eader end -->
+
+              <div class="tab-content" id="v-pills-tabContent">
+                <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+          <div class="tab-cont">
+          
+             <div class="card">
+              <div class="d-flex justify-content-between">
+                <div class="pagetitle">
+            <h1 class="p-2">Companies</h1>
+                </div>
+                <div>
+                   <div class="pagetitle p-2 " role="button"> 
+                     <h3 style=" font-size: 14px; background-color:rgb(226, 126, 226); padding: 6px; color: beige;">Add New campany</h3></div>
+                </div>
+           </div>
+            <div class="card-body">
+              <h5 class="card-title">Companies</h5>
+            <div class="d-flex align-items-start" >
+              <div>
+                <div class="company-card d-flex justify-content-between align-items-center">
+                  <div class="p-3"><h5 class="">Company 1</h5></div>
+                  <div class="p-3"><i class="ri-arrow-right-line" style="font-size: 34px; color: rgb(242, 143, 242);"></i></div>
+              </div>
+              </div>
+              <div>
+                <div class="company-card d-flex justify-content-between align-items-center"> 
+                <div class="p-3"><h5>Company 2</h5></div>
+                <div class="p-3"><i class="ri-arrow-right-line" style="font-size: 34px; color: rgb(242, 143, 242);"></i></div>
+
+               </div>
+              </div>
+              <div>
+                <div class="company-card d-flex align-items-center">
+                  <div class="mx-auto"><i class="ri-add-circle-fill " style="font-size: 34px; color: rgb(242, 143, 242);"></i></div>
+                <!-- <div class="p-3">rela</div> -->
+               </div>
+              </div>
+            </div>
+              
+            </div>
+          </div><!-- End Default Card -->
+             </div>
+                </div>
+                <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                  <div class="tab-cont">
+                  <div class="card">
+                    <div class="d-flex justify-content-between">
+                      <div class="pagetitle">
+                  <h1 class="p-2">Users</h1>
+                      </div>
+                      <div>
+                         <div class="pagetitle p-2 " role="button"> 
+                           <a href="{%  url 'signup:add_user'  %}" style=" font-size: 14px; background-color:rgb(226, 126, 226); padding: 6px; color: beige;">Add New User</a></div>
+                      </div>
+                 </div>
+                    <div class="card-body">
+                      <!-- <h5 class="card-title">Default Card</h5> -->
+                       <!-- Default Table -->
+              <table class="table table-light">
+                <thead class="label">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody class="text-body-tertiary">
+                  <tr>
+                    <th scope="row">1</th>
+                    <td><i class="bi bi-person" style="color: purple; font-size:24px; padding-right:8px ;"></i><span>branfy</span></td>
+                    <td style="font-size: 14px;">jhm@gamil.com</td>
+                    <td>+268909909</td>
+                    <td>
+                      <i class="ri-edit-2-fill" style="color: rgb(240, 122, 240); font-size: 28px;"></i>
+                      <i class="ri-delete-bin-2-fill" style="color: purple;font-size: 28px;"></i>
+
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td><i class="bi bi-person" style="color: purple; font-size:24px; padding-right:8px ;"></i><span>branfy</span></td>
+                    <td style="font-size: 14px;">jhm@gamil.com</td>
+                    <td>+268909909</td>
+                    <td>
+                      <i class="ri-edit-2-fill" style="color: rgb(240, 122, 240); font-size: 28px;"></i>
+                      <i class="ri-delete-bin-2-fill" style="color: purple; font-size: 28px;"></i>
+
+                    </td>
+                  </tr>
+              
+                </tbody>
+              </table>
+              <!-- End Default Table Example -->
+                   </div>
+                    </div>
+                  </div><!-- End Default Card -->
+                </div>
+                <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                  <div class="tab-cont">
+                  <div class="card">
+                    <div class="d-flex justify-content-between">
+                      <div class="pagetitle">
+                  <h1 class="p-2">Integration</h1>
+                      </div>
+                      <div>
+                         <div class="pagetitle p-2 " role="button"> 
+                           <a href="{% url 'signup:integrate'  %}" style=" font-size: 14px; background-color:rgb(226, 126, 226); padding: 6px; color: beige;">Add New Integartion</a></div>
+                      </div>
+                 </div>
+                    <div class="card-body">
+                      <div class="d-flex justify-content-between p-5">
+                         <!-- Default Card -->
+          <div class="card ml-5 p-3 ">
+            <div class="card-body">
+              <h5 class="card-title">Open AI</h5>
+             
+              <i class="ri-openai-fill" style="font-size: 59px; color: rgb(87, 142, 87); " ></i>
+            </div>
+          </div><!-- End Default Card --> <!-- Default Card -->
+          <div class="card ml-5 p-3">
+            <div class="card-body">
+              <h5 class="card-title">Messager</h5>
+              <i class="bi bi-messenger" style="font-size: 59px; color: rgb(68, 68, 138);"> </i>
+          
+            </div>
+          </div><!-- End Default Card --> <!-- Default Card -->
+          <div class="card ml-5 p-3">
+            <div class="card-body">
+              <h5 class="card-title">Go High Level</h5>
+              <i class="ri-game-fill" style="font-size: 59px;"> </i>
+             
+
+            </div>
+          </div><!-- End Default Card -->
+
+          <div class="card ml-5 p-3">
+            <div class="card-body">
+              <h5 class="card-title">Gmail</h5>
+              <i class="ri-google-fill" style="font-size: 59px; color: rgb(213, 119, 119);"> </i>
+             
+
+            </div>
+          </div><!-- End Default Card -->
+                      </div>
+                      <!-- <h5 class="card-title">Default Card</h5> -->
+                     <div>
+                    </div>
+                  </div><!-- End Default Card -->
+                </div>
+              </div>
+            </div>
+            <!-- End Vertical Pills Tabs -->
+
+            <!-- </div> -->
+          <!-- </div> -->
+
+         
+
+        <!-- </div> -->
+
+        <!-- <div class="col-lg-6"> -->
+
+         
+          
+
+          
+
+        <!-- </div> -->
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+ 
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  {% endblock %}
+ 
+ 
+
+</body>
+
+</html>

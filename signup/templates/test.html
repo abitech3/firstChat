@@ -1,0 +1,394 @@
+<form action="{% url 'signup:vote' question.id %}" method="post">
+    {% csrf_token %}
+    <fieldset>
+        <legend><h1>{{ question.question_text }}</h1></legend>
+        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+        {% for choice in question.choice_set.all %}
+            <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+            <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
+        {% endfor %}
+    </fieldset>
+    <input type="submit" value="Vote">
+    </form>
+
+    {% extends 'base.html' %}
+
+<!-- Include jQuery from a CDN -->
+
+
+{% block header %}
+{% include 'header.html'  %}
+  
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'signup/css/chat.css' %}">
+{% endblock %}
+
+{% block aside %}
+{% include 'side.html'  %}
+{% endblock %}
+
+  {% block content %}
+  <main id="" class="tab-main">
+
+    
+    <section class="section">
+      <div class="row">
+        
+            
+        <div class="wrapper">
+            <div class="container d-flex ">
+                <div class="left">
+                    <!-- <div class="top">
+                      <div class="hstack justify-content-between">
+                         <h1 class="card-title">Chat</h1>
+                           <i class="three-dots-vertical" style="font-size: 14px;"></i>
+                      </div>  
+                    </div> -->
+                    <!-- chat tab header -->
+                    
+                    <ul class="nav nav-tabs nav-tabs-bordered d-flex" id="borderedTabJustified" role="tablist">
+                      <li class="nav-item flex-fill" role="presentation">
+                        <button class="nav-link w-100 active" id="home-tab" data-bs-toggle="tab" data-bs-target="#bordered-justified-home" type="button" role="tab" aria-controls="home" aria-selected="true">All</button>
+                      </li>
+                      <li class="nav-item flex-fill" role="presentation">
+                        <button class="nav-link w-100" id="profile-tab" data-bs-toggle="tab" data-bs-target="#bordered-justified-profile" type="button" role="tab" aria-controls="profile" aria-selected="false">unread</button>
+                      </li>
+                      <li class="nav-item flex-fill" role="presentation">
+                        <button class="nav-link w-100" id="contact-tab" data-bs-toggle="tab" data-bs-target="#bordered-justified-contact" type="button" role="tab" aria-controls="contact" aria-selected="false">unresolved</button>
+                      </li>
+                    </ul>
+                    <!-- chat tab end -->
+              <div class="tab-content pt-2" id="borderedTabJustifiedContent">
+                    <ul class="tab-pane fade show active people" id="bordered-justified-home" role="tabpanel" aria-labelledby="home-tab">
+                        <li class="person" data-chat="person1">
+                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382994/thomas.jpg" alt="" />
+                            <span class="name">Thomas Bangalter</span>
+                            <span class="time">2:09 PM</span>
+                            <span class="preview">I was wondering...</span>
+                        </li>
+                        <li class="person" data-chat="person2">
+                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382994/dog.png" alt="" />
+                            <span class="name">Dog Woofson</span>
+                            <span class="time">1:44 PM</span>
+                            <span class="preview">I've forgotten how it felt before</span>
+                        </li>
+                        <li class="person" data-chat="person3">
+                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382994/louis-ck.jpeg" alt="" />
+                            <span class="name">Louis CK</span>
+                            <span class="time">2:09 PM</span>
+                            <span class="preview">But we’re probably gonna need a new carpet.</span>
+                        </li>
+                        <li class="person" data-chat="person4">
+                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382994/bo-jackson.jpg" alt="" />
+                            <span class="name">Bo Jackson</span>
+                            <span class="time">2:09 PM</span>
+                            <span class="preview">It’s not that bad...</span>
+                        </li>
+                        <li class="person" data-chat="person5">
+                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382994/michael-jordan.jpg" alt="" />
+                            <span class="name">Michael Jordan</span>
+                            <span class="time">2:09 PM</span>
+                            <span class="preview">Wasup for the third time like iyou blind bitch</span>
+                        </li>
+                        <li class="person" data-chat="person6">
+                            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382994/drake.jpg" alt="" />
+                            <span class="name">Drake</span>
+                            <span class="time">2:09 PM</span>
+                            <span class="preview">howdoyoudoaspace</span>
+                        </li>
+                    </ul>
+                    <ul class="tab-pane fade show active people" id="bordered-justified-profile" role="tabpanel" aria-labelledby="profile-tab">
+                      <li class="person" data-chat="person1">
+                          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382994/thomas.jpg" alt="" />
+                          <span class="name">Thomas Bangalter</span>
+                          <span class="time">2:09 PM</span>
+                          <span class="preview">I was wondering...</span>
+                      </li>
+                      <li class="person" data-chat="person2">
+                          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382994/dog.png" alt="" />
+                          <span class="name">Dog Woofson</span>
+                          <span class="time">1:44 PM</span>
+                          <span class="preview">I've forgotten how it felt before</span>
+                      </li>
+                      <li class="person" data-chat="person3">
+                          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382994/louis-ck.jpeg" alt="" />
+                          <span class="name">Louis CK</span>
+                          <span class="time">2:09 PM</span>
+                          <span class="preview">But we’re probably gonna need a new carpet.</span>
+                      </li>
+                      
+                      <li class="person" data-chat="person4">
+                          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382994/bo-jackson.jpg" alt="" />
+                          <span class="name">Bo Jackson</span>
+                          <span class="time">2:09 PM</span>
+                          <span class="preview">It’s not that bad...</span>
+                      </li>
+                      <li class="person" data-chat="person5">
+                          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382994/michael-jordan.jpg" alt="" />
+                          <span class="name">Michael Jordan</span>
+                          <span class="time">2:09 PM</span>
+                          <span class="preview">Wasup for the third time like iyou blind bitch</span>
+                      </li>
+                      <li class="person" data-chat="person6">
+                          <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382994/drake.jpg" alt="" />
+                          <span class="name">Drake</span>
+                          <span class="time">2:09 PM</span>
+                          <span class="preview">howdoyoudoaspace</span>
+                      </li>
+                  </ul>
+                  <ul class="tab-pane fade show active people" id="bordered-justified-contact" role="tabpanel" aria-labelledby="contact-tab">
+                    <li class="person" data-chat="person1">
+                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382994/thomas.jpg" alt="" />
+                        <span class="name">Thomas Bangalter</span>
+                        <span class="time">2:09 PM</span>
+                        <span class="preview">I was wondering...</span>
+                    </li>
+                    <li class="person" data-chat="person2">
+                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382994/dog.png" alt="" />
+                        <span class="name">Dog Woofson</span>
+                        <span class="time">1:44 PM</span>
+                        <span class="preview">I've forgotten how it felt before</span>
+                    </li>
+                    <li class="person" data-chat="person3">
+                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382994/louis-ck.jpeg" alt="" />
+                        <span class="name">Louis CK</span>
+                        <span class="time">2:09 PM</span>
+                        <span class="preview">But we’re probably gonna need a new carpet.</span>
+                    </li>
+                    <li class="person" data-chat="person4">
+                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382994/bo-jackson.jpg" alt="" />
+                        <span class="name">Bo Jackson</span>
+                        <span class="time">2:09 PM</span>
+                        <span class="preview">It’s not that bad...</span>
+                    </li>
+                    <li class="person" data-chat="person5">
+                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382994/michael-jordan.jpg" alt="" />
+                        <span class="name">Michael Jordan</span>
+                        <span class="time">2:09 PM</span>
+                        <span class="preview">Wasup for the third time like iyou blind bitch</span>
+                    </li>
+                    <li class="person" data-chat="person6">
+                        <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/382994/drake.jpg" alt="" />
+                        <span class="name">Drake</span>
+                        <span class="time">2:09 PM</span>
+                        <span class="preview">howdoyoudoaspace</span>
+                    </li>
+                </ul>
+              </div><!-- End Bordered Tabs Justified -->
+            </div>
+                <div class="middle">
+                    <div class="top"><span><span class="name">Mark this coversation as resolved</span></span></div>
+                  <!-- <div class="middle-chat"> -->
+            
+                   <div class ="msger-chat">
+
+                    <div class="msg left-msg">
+                      <div class="msg-img" style="background-image: url(https://image.flaticon.com/icons/svg/327/327779.svg)" ></div>
+                                              
+                      <div class="msg-bubble">
+                        <div class="msg-info">
+                          <div class="msg-info-name">BOT</div>
+                          <div class="msg-info-time">12:45</div>
+                        </div>
+                
+                        <div class="msg-text">
+                          Hi, welcome to SimpleChat! Go ahead and send me a message. 😄
+                        </div>
+                      </div>
+                    </div>
+                
+                    <div class="msg right-msg">
+                      <div class="msg-img" style="background-image: url(https://image.flaticon.com/icons/svg/145/145867.svg)"></div>
+                
+                      <div class="msg-bubble">
+                        <div class="msg-info">
+                          <div class="msg-info-name">Sajad</div>
+                          <div class="msg-info-time">12:46</div>
+                        </div>
+                
+                        <div class="msg-text">
+                          You can change your name in JS section!
+                        </div>
+                      </div>
+                    </div>
+                   </div>
+                   
+                    
+                   <form class="msger-inputarea">
+                    <input type="text" class="msger-input" placeholder="Enter your message...">
+                    <button type="submit" class="msger-send-btn">Send</button>
+                  </form>
+                <!-- </div> -->
+              </div>
+                <div class="right vstack">
+                  <div class="top">
+                    <div class="card">
+                      <div class="profile-card  vstack justify-content-center align-items-center">
+                        <img src="assets/main/img/profile-img.jpg " style="width: 50px;" alt="Profile" class="rounded-circle">
+                         <h6 class="lead mb-1">Kevin Anderson</h6>
+                         <p class="small mt-0">anderson@gmail.com</p>
+                         <p class="small fw-light">cleanwater, fl</p>
+                        <button class="chat-btn fs-6 ">view mail profile</button>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- end of top right -->
+                  <div class="right-body">
+                    <div class="vstack p-3">
+                  <div class="hstack justify-content-between">
+                    <p class="card-title fs-6 fw-lighter p-2">Assign operator</p>
+                     <i class="bi bi-chevron-up p-3"></i>
+                     </div>
+                     <div class="hstack">
+                      <img src="assets/img/messages-1.jpg " style="width: 30px; margin-right: 8px;" alt="Profile" class="rounded-circle">
+                        <p class="name">serri baraqui</p>
+                        <p style="margin-left: 43px; color: rgb(236, 120, 120);">reassign</p>
+                     </div>
+                     </div>
+
+                     <div class="d-flex flex-column p-3 ">
+                      <div class="hstack"  style="margin-top: 0px;">
+                        <p class="card-title fs-6 fw-lighter p-2">main information</p>
+                         <i class="bi bi-chevron-up p-3"></i>
+                         </div>
+                         <div class="" >
+                         <i class="bi bi-geo-alt-fill col-6 " style="color: rgb(197, 125, 197); margin-right:0px;"></i>
+                            <span style="font-size: 12px; padding-bottom:24px; margin-right: 80px;" class="fw-lighter col-6">clean water fl,state</span>
+                         </div>
+                         <div class="">
+                          <i class="bi bi-clock  " style="color: rgb(197, 125, 197); margin-right:0px;"></i>
+                             <span style="font-size: 12px; padding-bottom:24px; margin-right: 80px;" class="fw-lighter">3:04</span>
+                          </div>
+                          <div class="">
+                            <i class="bi bi-globe  " style="color: rgb(197, 125, 197); margin-right:0px;"></i>
+                           <span> <i class="bi bi-globe-americas  " style="color: rgb(197, 125, 197); margin-right:0px;"></i></span>
+
+                            </div>
+                         </div>
+                     
+                         <div class="d-flex flex-column p-3  ">
+                          <div class="hstack"  style="margin-top: 0px;">
+                            <p class="card-title fs-6 fw-lighter p-2">Visitor Device</p>
+                             <i class="bi bi-chevron-up p-3"></i>
+                             </div>
+                             <div class="" >
+                             <i class="bi bi-browser-chrome " style="color: rgb(197, 125, 197); margin-right:0px;"></i>
+                                <span style="font-size: 10px; padding-bottom:24px; margin-right: 80px;" class="fw-light ">chrom 14, on windows</span>
+                             </div>
+                             <div class="">
+                              <i class="bi bi-cloud " style="color: rgb(197, 125, 197); margin-right:0px;"></i>
+                                 <span style="font-size: 12px; padding-bottom:24px; margin-right: 80px;" class="fw-lighter">234.3d.345.67688.23</span>
+                              </div>
+                             </div>
+
+                             <div class="vstack p-3">
+                              <div class="hstack justify-content-between">
+                                <p class="small">conversation parcitipant</p>
+                                 <i class="bi bi-plus p-3"></i>
+                                 </div>
+                                 <div class="hstack justify-content-between">
+                                  <i class="bi bi-inbox " style="color: rgb(197, 125, 197); ">mail </i> 
+                                <p style="color: rgb(231, 105, 231);" class="fw-lighter">Add</p>
+
+                                 </div>    
+                                 </div>
+                                 
+
+                  </div>
+                </div>
+
+
+            </div>
+        </div>
+                  
+             
+              
+        
+            
+      </div>
+    </section>
+  </main><!-- End #main -->
+  {% endblock %}
+  <script>
+    const msgerForm = get(".msger-inputarea");
+const msgerInput = get(".msger-input");
+const msgerChat = get(".msger-chat");
+
+const BOT_MSGS = [
+  "Hi, how are you?",
+  "Ohh... I can't understand what you trying to say. Sorry!",
+  "I like to play games... But I don't know how to play!",
+  "Sorry if my answers are not relevant. :))",
+  "I feel sleepy! :("
+];
+
+// Icons made by Freepik from www.flaticon.com
+const BOT_IMG = "https://image.flaticon.com/icons/svg/327/327779.svg";
+const PERSON_IMG = "https://image.flaticon.com/icons/svg/145/145867.svg";
+const BOT_NAME = "BOT";
+const PERSON_NAME = "Sajad";
+
+msgerForm.addEventListener("submit", event => {
+  event.preventDefault();
+
+  const msgText = msgerInput.value;
+  if (!msgText) return;
+
+  appendMessage(PERSON_NAME, PERSON_IMG, "right", msgText);
+  msgerInput.value = "";
+
+  botResponse();
+});
+
+function appendMessage(name, img, side, text) {
+  //   Simple solution for small apps
+  const msgHTML = `
+    <div class="msg ${side}-msg">
+      <div class="msg-img" style="background-image: url(${img})"></div>
+
+      <div class="msg-bubble">
+        <div class="msg-info">
+          <div class="msg-info-name">${name}</div>
+          <div class="msg-info-time">${formatDate(new Date())}</div>
+        </div>
+
+        <div class="msg-text">${text}</div>
+      </div>
+    </div>
+  `;
+
+  msgerChat.insertAdjacentHTML("beforeend", msgHTML);
+  msgerChat.scrollTop += 500;
+}
+
+function botResponse() {
+  const r = random(0, BOT_MSGS.length - 1);
+  const msgText = BOT_MSGS[r];
+  const delay = msgText.split(" ").length * 100;
+
+  setTimeout(() => {
+    appendMessage(BOT_NAME, BOT_IMG, "left", msgText);
+  }, delay);
+}
+
+// Utils
+function get(selector, root = document) {
+  return root.querySelector(selector);
+}
+
+function formatDate(date) {
+  const h = "0" + date.getHours();
+  const m = "0" + date.getMinutes();
+
+  return `${h.slice(-2)}:${m.slice(-2)}`;
+}
+
+function random(min, max) {
+  return Math.floor(Math.random() * (max - min) + min);
+}
+
+  </script>
+</body>
+</html>
